@@ -1,0 +1,29 @@
+ {{#each produto}}
+<h1>{{this.name}}</h1>
+<dl>
+    <dt>Informações</dt>
+    <dd>{{this.description}}</dd>
+    <dt>Preço</dt>
+    <dd>{{this.price}}</dd>
+</dl>
+
+
+<ul>   
+    <h2>Comentários:</h2>   
+    {{#each comentarios}}
+        <li>
+            <b>{{this.author}}</b><br>
+            <p>{{this.comment}}</p>
+        </li>
+    {{/each}}
+</ul>
+
+<form action="/products" method="POST">
+    <label labelfor="author">Autor</label><br>
+    <input type="text" name="author"><br>
+    <label labelfor="comment">Comentário</label><br>
+    <textarea name="comment"></textarea><br>
+    <button type="submit">Enviar</button>
+    <input type="hidden" name="product_id" value="{{this.id}}">    
+</form>
+{{/each}}
