@@ -6,24 +6,27 @@
     <dt>Preço</dt>
     <dd>{{this.price}}</dd>
 </dl>
-
-
-<ul>   
-    <h2>Comentários:</h2>   
-    {{#each comentarios}}
+{{/each}}
+<h2>Comentários:</h2>
+<ol>   
+    {{#each comentarios as |com|}}
         <li>
-            <b>{{this.author}}</b><br>
-            <p>{{this.comment}}</p>
+            <b>{{com.author}}</b><br>
+            <p>{{com.comment}}</p>
         </li>
     {{/each}}
-</ul>
+</ol>
 
+<hr>
+
+{{#each produto}}
 <form action="/products" method="POST">
     <label labelfor="author">Autor</label><br>
     <input type="text" name="author"><br>
     <label labelfor="comment">Comentário</label><br>
-    <textarea name="comment"></textarea><br>
+    <textarea name="comment" cols="40" rows="7"></textarea><br>
     <button type="submit">Enviar</button>
     <input type="hidden" name="product_id" value="{{this.id}}">    
 </form>
 {{/each}}
+
